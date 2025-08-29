@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal portfolio — profile, experience and projects." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Portfolio — Your Name</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">what you seeketh?</a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="btn btn-ghost" aria-pressed="false" aria-label="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <img src="assets/me.jpg" alt="me" class="avatar">
+        </div>
+        <div class="hero-copy">
+          <h1>Hi, I'm Shradhan</h1>
+          <p class="lead">Front-end Engineer — building accessible,
+            maintainable web experiences. </p>
+          <p class="lead">
+            <span class="tag tag--rusty" role="status" aria-label="Availability">Currently open to new
+              opportunities</span>
+          </p>
+          <p class="meta">Based in Bengaluru, India • Available for remote &
+            hybrid roles</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">Get in touch</a>
+            <a class="btn btn-outline" href="#projects">View projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p>I am a software engineer with 7+ years of experience building web
+          applications. I enjoy working on user interfaces, performance
+          optimization, and improving developer workflows.</p>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2>Experiences</h2>
+        <ol class="timeline">
+          <li class="job">
+            <article>
+              <h3>Lead Front-end Engineer — Flo Labs</h3>
+              <p class="job-meta">2024 — Present • Bengaluru</p>
+              <p>Working on component libraries, design systems and
+                performance improvements across multiple customer-facing
+                products.</p>
+            </article>
+          </li>
+          <li class="job">
+            <article>
+              <h3>Senior Front-end Engineer — Wayground(formerly Quizizz)</h3>
+              <p class="job-meta">2021 — 2024 • Bengaluru</p>
+              <p>Built and maintained game experience. <a href="https://wayground.com/join" target="_blank">Join</a></p>
+              <p>Customize your avatar. <a href="https://wayground.com/join" target="_blank">Avatar Shop</a></p>
+            </article>
+          </li>
+          <li class="job">
+            <article>
+              <h3>Analyst II — Goldman Sachs</h3>
+              <p class="job-meta">2019 — 2021 • Bengaluru</p>
+              <p>Contributed to open source projects at <a href="https://legend.finos.org/">@finos/legend</a> </p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <figure class="project-media">
+              <div class="media-wrap">
+                <video src="assets/fileuploader.mov" controls preload="metadata" playsinline muted></video>
+              </div>
+              <figcaption class="sr-only">Demo: File uploader</figcaption>
+            </figure>
+            <h3>File uploader</h3>
+            <p>Minimally designed fileuploader for ReactJS applications</p>
+          </article>
+          <article class="project-card">
+            <figure class="project-media">
+              <div class="media-wrap">
+                <video src="assets/testimonials.mov" controls preload="metadata" playsinline muted></video>
+              </div>
+              <figcaption class="sr-only">Testimonials video</figcaption>
+            </figure>
+            <h3>
+              Banners
+            </h3>
+            <p>A stripe inspired banner from 2018.
+              <a href="https://web.archive.org/web/20190417174328/https://stripe.com/en-US/payments">Reference</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Reach out via <a href="mailto:shradhandev@gmail.com">shradhandev@gmail.com</a>
+          or connect on <a href="https://www.linkedin.com/in/shradhan/">LinkedIn</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> ✅ <del>Build a portfolio site</del></small>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle: persist preference in localStorage
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem('theme');
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        btn.setAttribute('aria-pressed', t === 'dark');
+      }
+      // initialize
+      if (stored) { applyTheme(stored); }
+      else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { applyTheme('dark'); }
+      // toggle
+      btn.addEventListener('click', function () {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+      });
+      // year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+
+</html>
